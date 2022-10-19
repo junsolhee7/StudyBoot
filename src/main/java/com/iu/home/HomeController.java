@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.home.board.qna.QnaMapper;
 import com.iu.home.board.qna.QnaVO;
@@ -27,28 +26,13 @@ public class HomeController {
 	private QnaMapper qnaMapper;
 	
 	@GetMapping("/")
-//	@ResponseBody
-	public String home() throws Exception{
+	public String home() throws Exception {
 		log.error("Error Message");
 		log.warn("Warn Message");
 		log.info("Info Message");
 		log.debug("Debug Message");
 		log.trace("Trace Message");
-		
-		List<QnaVO> ar = qnaMapper.getList();
-		log.info("List : {} size {}", ar, ar.size());
 		return "index";
 	}
-	
-	@GetMapping("/qna/list")
-	public ModelAndView qnaList() throws Exception{
-		ModelAndView mv = new ModelAndView();
-		log.info("Info Message");
-		List<QnaVO> ar = qnaMapper.getList();
-		mv.addObject("ar",ar);
-		mv.setViewName("./board/list");
-		
-		return mv;
-	}
-	
+
 }
