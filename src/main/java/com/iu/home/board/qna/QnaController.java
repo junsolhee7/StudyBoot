@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -24,7 +25,7 @@ public class QnaController {
 	private QnaService qnaService;
 	
 	@PostMapping("add")
-	public void setAdd(QnaVO qnaVO, MultipartFile [] files, RedirectAttributes redirectAttributes)throws Exception{
+	public String setAdd(QnaVO qnaVO, MultipartFile [] files, RedirectAttributes redirectAttributes)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		int result = qnaService.setAdd(qnaVO);
 		redirectAttributes.addAttribute("result",result);
@@ -32,7 +33,7 @@ public class QnaController {
 		mv.setViewName("redirect:./list");
 		log.info("Result {}", result);
 		
-		
+		return "";
 	}
 	
 	@GetMapping("add")

@@ -10,9 +10,13 @@
 		limit #{startRow}, #{perPage}
 	</select>
 	
-	<insert id="setAdd" parameterType="QnaVO">
+	<insert id="setAdd" parameterType="QnaVO"  useGeneratedKeys="true" keyProperty="num">
 		insert into QNA 
 		values (#{num}, #{title}, #{writer}, #{contents}, 0, now(), 0,0,0)
 	</insert>
 	
+	<insert id="setFileAdd" parameterType="QnaFileVO">
+		INSERT INTO QNAFILES
+		VALUES (NULL,#{num},#{fileName},#{oriName})
+	</insert>
 </mapper>  
