@@ -22,8 +22,16 @@ public class FileManager {
 		//2. 확장자
 		StringBuffer bf = new StringBuffer();
 		bf.append(fileName);
-		bf.append("_");
-		bf.append(multipartFile.getOriginalFilename());
+		bf.append("_"); //랜덤문자,파일명 구분역할
+		
+		//파일명과 확장자 분리
+		String ex = multipartFile.getOriginalFilename(); //아이유.jpg  
+		ex = ex.substring(ex.lastIndexOf("."));  //ex=.jpg
+		
+//		bf.append(multipartFile.getOriginalFilename()); //확장자 분리 전
+		bf.append(ex); //확장자 분리 후
+		
+		fileName=bf.toString();
 		
 		log.info("FileName {} ", bf.toString());
 		

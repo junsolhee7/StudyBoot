@@ -19,4 +19,9 @@
 		INSERT INTO QNAFILES
 		VALUES (NULL,#{num},#{fileName},#{oriName})
 	</insert>
+	
+	<select id="getDetail" resultType="QnaVO" parameterType="QnaVO">
+		SELECT * FROM QNA
+		WHERE NUM=#{num}
+	</select>
 </mapper>  

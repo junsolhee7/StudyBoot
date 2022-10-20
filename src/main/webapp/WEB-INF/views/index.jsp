@@ -5,16 +5,36 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>index.jsp</title>
 
 <c:import url="./temp/boot.jsp"></c:import>
 <link href="/css/test.css" rel="stylesheet">
 
 </head>
 <body>
-	<h1>Index page</h1>
-	<img src="./images/winter.jpeg" id="id1">
-	<a href="./qna/list">QNA</a>
-
+	<div class="container-fluid">
+		<div class="row justify-content-center">
+			<div class="col-8">
+					<h1>Index page</h1>
+					<img src="./images/winter.jpeg" id="id1">
+					<a href="./qna/list">QNA</a>
+					<div>
+						<img alt="" src="/file/img5.jpg">
+						<a href="/file/qna/img6.jpg">장어</a>
+						<br>
+						<img alt="" src="/file/qna/img6.jpg">
+						<a href="/file/img5.jpg">삼겹살</a>
+						<br>
+						<img alt="" src="/file/qna/pptsample.pptx">
+						<a href="/file/pptsample.pptx">삼겹살</a>
+						
+						<br>download
+						<a href="/fileDown/qna?fileNum=2">삼겹살</a>
+						
+						
+					</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

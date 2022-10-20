@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>list.jsp</title>
 <c:import url="../temp/boot.jsp"></c:import>
 </head>
 <body>
@@ -32,7 +32,7 @@
 				<tr>
 					<td>${vo.num}</td>
 					<td>${vo.title}</td>
-					<td>${vo.writer}</td>
+					<td><a href="./detail?num=${vo.num}">${vo.writer}</a></td>
 					<td>${vo.hit}</td>
 					<td>${vo.regDate}</td>
 				</tr>	

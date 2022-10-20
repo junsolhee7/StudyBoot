@@ -46,10 +46,12 @@ public class QnaService {
 				qnaMapper.setFileAdd(qnaFileVO);
 			}
 		}
-		
-	String fileName = fileManager.saveFile(qnaVO.getFiles()[1],path);
-		
+		String fileName = fileManager.saveFile(qnaVO.getFiles()[1],path);
 		return 1;//qnaMapper.setAdd(qnaVO);
 	}
-
+	public QnaVO getDetail(QnaVO qnaVO) throws Exception{
+		qnaVO = qnaMapper.getDetail(qnaVO);
+		return qnaVO;
+	}
+	
 }
