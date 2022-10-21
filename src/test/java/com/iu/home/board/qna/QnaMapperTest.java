@@ -24,6 +24,11 @@ import com.iu.home.util.Pager;
 class QnaMapperTest {
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 	
+	
+	@Value("${my.default}")
+	private String app;
+	
+	
 	@Autowired
 	private QnaMapper qnaMapper;
 	
