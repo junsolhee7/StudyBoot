@@ -2,6 +2,8 @@ package com.iu.home.board.qna;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,15 +27,12 @@ public class QnaController {
 	private QnaService qnaService;
 	
 	@PostMapping("add")
-	public String setAdd(QnaVO qnaVO, MultipartFile [] files, RedirectAttributes redirectAttributes)throws Exception{
-		ModelAndView mv = new ModelAndView();
-		int result = qnaService.setAdd(qnaVO);
-		redirectAttributes.addAttribute("result",result);
-		mv.addObject("result",result);
-		mv.setViewName("redirect:./list");
-		log.info("Result {}", result);
+	public String setAdd(QnaVO qnaVO, RedirectAttributes redirectAttributes)throws Exception{
 		
-		return "";
+		int result = qnaService.setAdd(qnaVO);
+		redirectAttributes.addAttribute("result", result);
+		
+		return "redirect:./list";
 	}
 	
 	@GetMapping("add")
@@ -51,15 +50,5 @@ public class QnaController {
 		return mv;
 	}
 
-	@GetMapping("detail")
-	public ModelAndView getDetail(QnaVO qnaVO) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		
-		qnaVO = qnaService.getDetail(qnaVO);
-		
-		mv.addObject("vo",qnaVO);
-		mv.setViewName("board/detail");
-		return mv;
-	}
 	
 }

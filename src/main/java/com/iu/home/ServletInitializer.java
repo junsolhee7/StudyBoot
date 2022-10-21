@@ -1,4 +1,3 @@
-
 package com.iu.home;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;

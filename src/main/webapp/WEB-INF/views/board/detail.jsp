@@ -8,7 +8,7 @@
 <title>detail.jsp</title>
 </head>
 <body>
-	<div class="container-fluid">
+<%-- 	<div class="container-fluid">
 		<div class="row justify-content-center">
 			<div class="col-8">
 				<table class="table table-hover">
@@ -34,6 +34,6 @@
 				
 			</div>
 		</div>
-	</div>
+	</div> --%>
 </body>
 </html>

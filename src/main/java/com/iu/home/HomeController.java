@@ -16,7 +16,7 @@ import com.iu.home.board.qna.QnaVO;
 @Controller
 public class HomeController {
 	
-	@Value("${my.message.hi}")
+//	@Value("${my.message.hi}")
 	private String message;
 	@Value("${my.default}")
 	private String app;
@@ -29,9 +29,11 @@ public class HomeController {
 	
 	@GetMapping("/")
 	public String home() throws Exception {
-		log.info("=================================");
-		log.info("Message {}",message);
-		log.info("default {}",app);
+		log.info("==========================");
+		log.info("message {} ", message);
+		log.info("default {} ", app);
+		log.info("==========================");
+
 		return "index";
 	}
 
