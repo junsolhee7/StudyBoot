@@ -6,7 +6,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Component
 @Slf4j
-public class Transport {
+public class Transeport {
 	public void takeBus(){
 		log.info("----------버스 타기-------");
 	}

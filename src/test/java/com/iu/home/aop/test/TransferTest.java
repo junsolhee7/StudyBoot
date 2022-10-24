@@ -10,15 +10,15 @@ import org.springframework.boot.test.context.SpringBootTest;
 class TransferTest {
 
 	@Autowired
-	private Transport transport;
+	private Transeport transeport;
 	@Autowired
 	private Card card;
 	
 	@Test
 	void test() {
 		
-		transport.takeBus();
-		transport.takeSubway();
+		transeport.takeBus();
+		transeport.takeSubway();
 		
 		
 	}
