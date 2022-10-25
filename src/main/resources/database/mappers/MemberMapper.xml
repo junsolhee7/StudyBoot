@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iu.home.board.member.MemberMapper">
+
+	<insert id="setAdd" parameterType="MemberVO">
+		insert into member (id,pw,name,email) values (#{id},
+		#{pw},#{name},#{email})
+	</insert>
+	
+	<insert id="setMemberRole" parameterType="MemberVO">
+		insert into member_role values ({#id},
+		#{pw},#{name},#{email})
+	</insert>
+	
+	<select id="getLogin" parameterType="MemberVO" resultType="">
+		select M.*, R.*
+		from member M
+			inner join
+			member_role MR
+			on M.id = MR.id
+			inner join
+			on MR.num = R.num
+		where M.id=#{id} and M.pw=#{pw}
+	</select>
+	
+	<resultMap>
+	
+	</resultMap>
+</mapper>
