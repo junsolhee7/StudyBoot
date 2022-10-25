@@ -17,7 +17,7 @@
 		<h1>Board Write Page</h1>
 		<form action="add" method="post" enctype="multipart/form-data">
 			<div class="mb-3">
-			  <label for="title" class="form-label">Titlea</label>
+			  <label for="title" class="form-label">Title</label>
 			  	<input type="text" name="title" class="form-control" id="title" placeholder="제목">
 			</div>
 			<div class="mb-3">
@@ -28,7 +28,6 @@
 			  <label for="contents" class="form-label">Contents</label>
 			  <textarea class="form-control" name="contents" id="contents"></textarea>
 			</div>
-			
 			<div class="mb-3">
 			  <label for="contents" class="form-label">File</label>
 			  <input type="file" name="files">
@@ -37,7 +36,6 @@
 			  <label for="contents" class="form-label">File</label>
 			  <input type="file" name="files">
 			</div>
-			
 			<div>
 				<button class="btn btn-danger">WRITE</button>
 			</div>

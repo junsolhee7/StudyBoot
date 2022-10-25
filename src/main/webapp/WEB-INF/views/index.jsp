@@ -30,9 +30,12 @@
 						
 						<br>download
 						<a href="/fileDown/qna?fileNum=2">삼겹살</a>
-						
-						
 					</div>
+			</div>
+			<div>
+				<a href="/member/add">회원가입</a>
+				<a href="/member/login">로그인</a>
+				<a href="/member/logout">로그아웃</a>
 			</div>
 		</div>
 	</div>

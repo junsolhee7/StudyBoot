@@ -27,11 +27,14 @@ public class QnaService {
 	@Value("${app.upload.qna}")
 	private String path;
 	
+	public QnaVO getDetail(QnaVO qnaVO) throws Exception{
+		return qnaMapper.getDetail(qnaVO);
+	}
+	
 	public List<QnaVO> getList(Pager pager)throws Exception{
 		pager.makeRow();
 		return qnaMapper.getList(pager);
 	}
-	
 	
 	public int setAdd(QnaVO qnaVO)throws Exception{
 		int result = qnaMapper.setAdd(qnaVO);
@@ -41,8 +44,6 @@ public class QnaService {
 		if(!file.exists()) {
 			boolean check=file.mkdirs();
 		}
-	
-		
 		
 		for(MultipartFile f : qnaVO.getFiles()) {
 			
@@ -54,7 +55,7 @@ public class QnaService {
 				qnaFileVO.setOriName(f.getOriginalFilename());
 				qnaFileVO.setNum(qnaVO.getNum());
 				qnaMapper.setFileAdd(qnaFileVO);
-				
+																
 			}
 		}
 		

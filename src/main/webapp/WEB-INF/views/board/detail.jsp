@@ -6,34 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>detail.jsp</title>
+<c:import url="../temp/boot.jsp"></c:import>
 </head>
 <body>
-<%-- 	<div class="container-fluid">
-		<div class="row justify-content-center">
-			<div class="col-8">
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th>NUM</th>
-							<th>TILTE</th>
-							<th>WRITER</th>
-							<th>HIT</th>
-							<th>DATE</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>${requestScope.vo.num}</td>
-							<td>${requestScope.vo.title}</td>
-							<td><a href="./detail?num=${vo.num}">${requestScope.vo.writer}</a></td>
-							<td>${requestScope.vo.hit}</td>
-							<td>${requestScope.vo.regDate}</td>
-						</tr>	
-					</tbody>
-				</table>
-				
-			</div>
-		</div>
-	</div> --%>
+	<h1>Detail Page</h1>
+	<h3>Title : ${vo.title}</h3>
+	<c:forEach items="${vo.qnaFileVOs}" var="fileVO">
+		<img alt="" src="/file/qna/${fileVO.fileName}">
+		<a href="/fileDown/qna?fileNum=${fileVO.fileNum}">${fileVO.oriName}</a>
+	</c:forEach>
 </body>
 </html>
