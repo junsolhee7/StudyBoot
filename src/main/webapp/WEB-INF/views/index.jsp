@@ -6,10 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>index.jsp</title>
-
-<c:import url="./temp/boot.jsp"></c:import>
 <link href="/css/test.css" rel="stylesheet">
-
+<c:import url="./temp/boot.jsp"></c:import>
+<script defer src="/js/test.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -19,7 +18,7 @@
 					<img src="./images/winter.jpeg" id="id1">
 					<a href="./qna/list">QNA</a>
 					<div>
-						<img alt="" src="/file/img5.jpg">
+						<!-- <img alt="" src="/file/img5.jpg">
 						<a href="/file/qna/img6.jpg">장어</a>
 						<br>
 						<img alt="" src="/file/qna/img6.jpg">
@@ -29,7 +28,7 @@
 						<a href="/file/pptsample.pptx">삼겹살</a>
 						
 						<br>download
-						<a href="/fileDown/qna?fileNum=2">삼겹살</a>
+						<a href="/fileDown/qna?fileNum=2">삼겹살</a> -->
 					</div>
 			</div>
 			<div>
@@ -45,6 +44,16 @@
 						</c:otherwise>
 					</c:choose>
 				</div>
+				<button id="btn">CLICK</button>
+
+				<button class="buttons">BTN1</button>
+				<button class="buttons">BTN2</button>
+				<button class="buttons">BTN3</button>
+
+				<div id="test">
+
+				</div>
+
 			</div>
 		</div>
 	</div>

@@ -1,8 +1,11 @@
 package com.iu.home.member;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +15,8 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/member/*")
 public class MemberController {
 
-	
+	@Autowired
+	private MemberService memberService;
 	
 	@GetMapping("add")
 	public ModelAndView getAdd() throws Exception{
@@ -31,4 +35,11 @@ public class MemberController {
 //	@PostMapping("login")
 	
 //	@GetMapping("logout")
+	
+	@PostMapping("getIdCheck")
+	@ResponseBody
+	public int getIdCheck(int id) throws Exception{
+		int result = memberService.getIdCheck(id);
+		return result;
+	}
 }
