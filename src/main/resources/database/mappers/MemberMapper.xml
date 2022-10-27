@@ -35,7 +35,7 @@
 		</collection>
 	</resultMap>
 	
-	<select id="getIdCheck" parameterType="MemberVO">
-		SELECT * FROM MEMBER WHERE id=#{id};
+	<select id="getIdCheck" parameterType="MemberVO" resultType="Integer">
+		SELECT COUNT(ID) FROM MEMBER WHERE ID=#{id}
 	</select>	
 </mapper>    

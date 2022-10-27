@@ -14,8 +14,8 @@ public class MemberService {
 	@Autowired
 	private MemberMapper memberMapper;
 	
-	public int getIdCheck(int id) throws Exception{
-		int result = memberMapper.getIdCheck(id);
+	public Integer getIdCheck(MemberVO memberVO) throws Exception{
+		Integer result = memberMapper.getIdCheck(memberVO);
 		return result;
 	}
 }

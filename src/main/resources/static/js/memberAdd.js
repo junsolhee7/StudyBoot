@@ -23,8 +23,21 @@ let results = [false,false,false,false,false];
 
 //ID Check
 $("#inputId").blur(function(){
-    let result = nullCheck($("#inputId").val(), $("#inputIdResult"),"ID");
+    let id = $("#inputId").val();
+    let result = nullCheck(id, $("#inputIdResult"),"ID");
     results[0]=result;
+
+    //단 id가 비어있지 않을 때
+    $.get("./idCheck?id="+id,function(data){
+        console.log("Data : "+data);
+        if(data=='0'){
+            $("#inputIdResult").html("사용가능한 ID 입니다.");
+            result[0]=true;
+        }else{
+            $("#inputIdResult").html("이미 사용중인 ID 입니다.")
+            result[0]=false;
+        }
+    })
 })
 
 //pw Check on 사용

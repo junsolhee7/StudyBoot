@@ -36,10 +36,10 @@ public class MemberController {
 	
 //	@GetMapping("logout")
 	
-	@PostMapping("getIdCheck")
+	@GetMapping("idCheck")
 	@ResponseBody
-	public int getIdCheck(int id) throws Exception{
-		int result = memberService.getIdCheck(id);
+	public int getIdCheck(MemberVO memberVO) throws Exception{
+		Integer result = memberService.getIdCheck(memberVO);
 		return result;
 	}
 }
