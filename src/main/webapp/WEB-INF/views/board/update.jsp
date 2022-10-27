@@ -15,19 +15,24 @@
 	<div class="container-fluid">
 	<div class="row justify-content-center">
 		<div class="col-6">
-		<h1>Board Write Page</h1>
-		<form action="add" method="post" enctype="multipart/form-data">
+		<h1>Board update Page</h1>
+		<form action="update" method="post" enctype="multipart/form-data">
+
+            <input type="hidden" name="num" value="${vo.num}">
+
 			<div class="mb-3">
 			  <label for="title" class="form-label">Title</label>
-			  	<input type="text" name="title" class="form-control" id="title" placeholder="제목">
+			  	<input type="text" value="${vo.title}" name="title" class="form-control" id="title" placeholder="제목">
 			</div>
+
 			<div class="mb-3">
 			  <label for="writer" class="form-label">Writer</label>
-			  	<input type="text" name="writer" class="form-control" id="writer" placeholder="작성자">
+			  	<input type="text" value="${vo.writer}" name="writer" class="form-control" id="writer" placeholder="작성자">
 			</div>
+
 			<div class="mb-3">
 			  <label for="contents" class="form-label">Contents</label>
-			  <textarea class="form-control" name="contents" id="contents"></textarea>
+			  <textarea class="form-control" value="${vo.contents}" name="contents" id="contents"></textarea>
 			</div>
 			
 			<div class="mb-3">
@@ -35,20 +40,15 @@
 			</div>
 
 			<div class="mb-3" id="fileAddResult">
-				
+                <c:forEach items="${vo.qnaFileVOs}" var="fileVO">
+                    <p>${fileVO.oriName}
+                        <button type="button" class="deleteFile" data-file-num="${fileVO.fileNum}">X</button>
+                    </p>
+                </c:forEach>
 			</div>
-			
-			<!-- <div class="mb-3">
-			  <label for="contents" class="form-label">File</label>
-			  <input type="file" name="files">
-			</div>
-			<div class="mb-3">
-			  <label for="contents" class="form-label">File</label>
-			  <input type="file" name="files">
-			</div> -->
 
 			<div>
-				<button class="btn btn-danger">WRITE</button>
+				<button class="btn btn-danger">UPDATE</button>
 			</div>
 		</form>
 		</div>
@@ -60,6 +60,8 @@
         tabsize: 4,
         height: 250
       });
+
+    $('#contents').summernote('code','${vo.contents}');
 	</script>
 
 </body>

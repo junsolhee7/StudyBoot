@@ -57,9 +57,9 @@
 		console.log("result  " , result)
 		if(result != ""){
 			if(result == '1'){
-				alert('등록 성공');
+				console.log('등록 성공');
 			}else {
-				alert('등록 실패');
+				console.log('등록 실패');
 			}
 		}
 	

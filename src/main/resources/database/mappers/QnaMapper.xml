@@ -5,6 +5,15 @@
 
 <mapper namespace="com.iu.home.board.qna.QnaMapper">
 
+
+	<select id="getDetailFile" parameterType="QnaFileVO" resultType="QnaVO">
+		SELECT * FROM QNAFILES WHERE FILENUM=#{fileNum}
+	</select>
+	
+	<delete id="setDeleteFile" parameterType="QnaFileVO">
+		DELETE FROM QNAFILES WHERE NUM=#{num}
+	</delete>
+
 	<select id="getDetail" resultMap="getDetailResult" parameterType="QnaVO">
 		SELECT Q.*,QF.*
 		FROM QNA Q
