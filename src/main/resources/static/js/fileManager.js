@@ -3,7 +3,24 @@ console.log("fileManager");
 //파일의 갯수를 지정하는 변수
 let count = 0;
 
+function setCount(c){
+    if(c<1 || c>5){
+        c=1;
+    }
+    count=c;
+}
+
 $("#fileAdd").click(function(){
+    if(flag){
+        let size = $("#fileAddResult").attr("data.file-size");
+
+        if(size==undefined){
+            size=0;
+        }
+        count = size;
+        flag=false;
+    }
+
     if(count<5){
         let r = '<div class="mb-3">';
         r = r + '<label for="contents" class="form-label">File</label>';
@@ -29,10 +46,20 @@ $("#fileAddResult").on("click",".del",function(){
     count--;
 })
 
+
+let flag = true;
 /// 글수정시 첨부파일 삭제
 $(".deleteFile").click(function(){
     //DB,HDD에 파일 삭제
     let check = confirm("삭제 됩니다... 복구 불가");
+    if(flag){
+        let size = $("#fileAddResult").attr("data.file-size");
+
+        console.log("size : ",size == undefined);
+        count = size;
+        flag=false;
+    }
+
     console.log("Before : "+$(this));
     const btn = $(this);
 
@@ -51,12 +78,11 @@ $(".deleteFile").click(function(){
                 console.log("Result : ",result);
                 console.log("Atert Result This : ",$(this));
                 $(btn).parent().remove();
+                count--;
             },
             error:function(){
                 console.log("Error 발생");
             }
         })
-
     }
-
 });

@@ -39,7 +39,7 @@
 				<button type="button" id="fileAdd">FileAdd</button>
 			</div>
 
-			<div class="mb-3" id="fileAddResult">
+			<div class="mb-3" id="fileAddResult" data-file-size="${vo.qnaFileVOs.size()}">
                 <c:forEach items="${vo.qnaFileVOs}" var="fileVO">
                     <p>${fileVO.oriName}
                         <button type="button" class="deleteFile" data-file-num="${fileVO.fileNum}">X</button>
@@ -62,6 +62,11 @@
       });
 
     $('#contents').summernote('code','${vo.contents}');
+
+	count = ${vo.qnaFileVOs.size()};
+
+	setCount(${vo.qnaFileVOs.size()});
+
 	</script>
 
 </body>
