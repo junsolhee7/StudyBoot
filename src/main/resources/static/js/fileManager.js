@@ -48,7 +48,7 @@ $("#fileAddResult").on("click",".del",function(){
 
 
 let flag = true;
-/// 글수정시 첨부파일 삭제
+///----------------- 글수정시 첨부파일 삭제---------------------
 $(".deleteFile").click(function(){
     //DB,HDD에 파일 삭제
     let check = confirm("삭제 됩니다... 복구 불가");
