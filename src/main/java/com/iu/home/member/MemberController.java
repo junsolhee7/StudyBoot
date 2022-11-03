@@ -96,9 +96,13 @@ public class MemberController {
 	
 	@GetMapping("logout")
 	public String getLogout(HttpSession session)throws Exception{
+		log.info("====내가만든 logout 메서드====");
 		session.invalidate();
 		
 		return "redirect:../";
 	}
-
+	@GetMapping("mypage")
+	public void getMypage() throws Exception{
+		
+	}
 }

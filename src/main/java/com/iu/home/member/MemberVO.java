@@ -81,4 +81,7 @@ public class MemberVO implements UserDetails{
 	// 계정 사용 여부
 	// true : 계정 활성화, 계정 사용 가능
 	// false : 계정 비활성화, 로그인 불가 (회원가입했지만 로그인 못하게)
+	public boolean isEnabled() {
+		return true;
+	}
 }

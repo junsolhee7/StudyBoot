@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,18 +40,28 @@
 			<div>
 				<a href="/member/add">회원가입</a>
 				<div>
-					<c:choose>
-						<c:when test="${not empty member}">
-							<h3>${member.name}님 환영합니다.</h3>
-							<h3><spring message code="welcome" argument="${member.name}"></spring></h3>
-							<h3><spring message code="welcome2" argument="${member.id}_${member.name}" argumentSeparator=":"></spring></h3>
-							<a href="./member/logout">로그아웃</a>				
-						</c:when>
-						<c:otherwise>
-							<a href="./member/login">로그인</a>
-							<a href="./member/add">회원가입</a>
-						</c:otherwise>
-					</c:choose>
+					<!-- 로그인 성공 -->
+					<sec:authorize access="isAuthenticated()">
+						<sec:authentication property="Principal" var="member"/>
+						<h3>${member.name}님 환영합니다.</h3>
+						<h3><spring message code="welcome" argument="${member.name}"></spring></h3>
+						<h3><spring message code="welcome2" argument="${member.id}_${member.name}" argumentSeparator=":"></spring></h3>
+						
+						<a href="./member/mypage">myPage</a>
+						<a href="./member/logout">로그아웃</a>
+
+					</sec:authorize>					
+					<!-- 로그인 X -->
+					<sec:authorize access="!isAuthenticated()">									
+						<a href="./member/login">로그인</a>
+						<a href="./member/add">회원가입</a>
+					</sec:authorize>
+					<sec:authorize url="/admin" var="ad">
+						<a href="/admin">GO Admin</a>
+					</sec:authorize>
+					<sec:authorize access="hasAnyRole('ADMIN','MANAGER')">
+						<a href="/manager">GO Manager</a>
+					</sec:authorize>
 				</div>
 				<button id="btn">CLICK</button>
 
