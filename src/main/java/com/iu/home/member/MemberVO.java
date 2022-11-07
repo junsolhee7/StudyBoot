@@ -5,8 +5,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Range;
@@ -18,15 +20,19 @@ import lombok.Data;
 
 @Data
 public class MemberVO implements UserDetails{
-	@NotBlank(message="ID는 꼭 필요해!!!")
+	
+	@NotBlank(message = "ID는 꼭 필요해!!!")
 	private String id;
-	@Size(max = 10, min = 4)
+	@NotBlank
 	private String pw;
 	private String pwCheck;
+	@NotBlank
 	private String name;
+	@Email
+	@NotBlank
 	private String email;
 	
-	@Range(max=150, min=0)
+	@Range(max = 150, min = 0)
 	private int age;
 	
 	@Past
@@ -44,31 +50,38 @@ public class MemberVO implements UserDetails{
 			
 		}
 		
-		//<? super T>
-		return null;
+		return authorities;
 	}
+
 	@Override
 	public String getPassword() {
-		return this.pw;
+		// PW 반환
+		return this.getPw();
 	}
+
 	@Override
 	public String getUsername() {
+		// ID 반환
 		return this.id;
 	}
+
 	@Override
 	public boolean isAccountNonExpired() {
-		// 계정의 만료여부
-		// true : 만료 안됨
-		// false : 만료 됨, 로그인 불가
+		// TODO Auto-generated method stub
+		//계정의 만료 여부
+		//true : 만료 안됨
+		//false: 만료 됨, 로그인 불가
 		return true;
 	}
+
 	@Override
 	public boolean isAccountNonLocked() {
-		// 계정의 잠김여부
+		// 계정 잠김 여부
 		// true : 계정이 잠기지 않음
-		// false : 계정이 잠김, 로그인 불가
+		// false : 계점이 잠김, 로그인 불가
 		return true;
 	}
+
 	@Override
 	public boolean isCredentialsNonExpired() {
 		// 비밀번호 만료 여부
@@ -77,11 +90,14 @@ public class MemberVO implements UserDetails{
 		return true;
 	}
 	
-	// isEnabled
+	//isEnabled
 	// 계정 사용 여부
-	// true : 계정 활성화, 계정 사용 가능
-	// false : 계정 비활성화, 로그인 불가 (회원가입했지만 로그인 못하게)
+	// true : 계정 활성화(계정 사용 가능)
+	// false : 계정 비활성화(계정 사용 불가, 로그인 불가)
 	public boolean isEnabled() {
 		return true;
 	}
+	
+	
+
 }

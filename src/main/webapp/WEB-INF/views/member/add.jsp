@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>add.jsp</title>
+<title>Insert title here</title>
 <c:import url="../temp/boot.jsp"></c:import>
 <script defer src="/js/util.js"></script>
 <script defer src="/js/memberAdd.js"></script>

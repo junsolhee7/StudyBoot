@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>index.jsp</title>
+
 <link href="/css/test.css" rel="stylesheet">
 <c:import url="./temp/boot.jsp"></c:import>
 <script defer src="/js/test.js"></script>
@@ -49,11 +50,15 @@
 						
 						<a href="./member/mypage">myPage</a>
 						<a href="./member/logout">로그아웃</a>
+						<form id="outForm" action="./member/logout" method="post">
+						
+						</form>
 
 					</sec:authorize>					
-					<!-- 로그인 X -->
+					<!-- 로그인 전 -->
 					<sec:authorize access="!isAuthenticated()">									
 						<a href="./member/login">로그인</a>
+						<a href="/oauth2/authorization/kakao">Kakao Login</a>
 						<a href="./member/add">회원가입</a>
 					</sec:authorize>
 					<sec:authorize url="/admin" var="ad">
@@ -70,9 +75,12 @@
 				<button class="buttons">BTN3</button>
 
 				<div id="test">
-
 				</div>
-
+				<h1>${h}</h1>
+				<h1>${h}</h1>
+				<h1>${h}</h1>
+				<h1>${h}</h1>
+				
 			</div>
 		</div>
 	</div>

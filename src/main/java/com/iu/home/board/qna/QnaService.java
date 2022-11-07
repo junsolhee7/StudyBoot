@@ -27,18 +27,20 @@ public class QnaService {
 	@Value("${app.upload.qna}")
 	private String path;
 	
-	public int setDeleteFile(QnaFileVO qnaFileVO) throws Exception{
+	public int setDeleteFile(QnaFileVO qnaFileVO)throws Exception{
 		qnaFileVO = qnaMapper.getDetailFile(qnaFileVO);
 		int result = qnaMapper.setDeleteFile(qnaFileVO);
 		
 		if(result>0) {
-			File file = new File(path,qnaFileVO.getFileName());
+			File file = new File(path, qnaFileVO.getFileName());
 			file.delete();
 		}
+		
 		return result;
+		
 	}
 	
-	public QnaVO getDetail(QnaVO qnaVO) throws Exception{
+	public QnaVO getDetail(QnaVO qnaVO)throws Exception{
 		return qnaMapper.getDetail(qnaVO);
 	}
 	
@@ -46,6 +48,7 @@ public class QnaService {
 		pager.makeRow();
 		return qnaMapper.getList(pager);
 	}
+	
 	
 	public int setAdd(QnaVO qnaVO)throws Exception{
 		int result = qnaMapper.setAdd(qnaVO);
@@ -55,9 +58,11 @@ public class QnaService {
 		if(!file.exists()) {
 			boolean check=file.mkdirs();
 		}
+	
+		
 		
 		for(MultipartFile f : qnaVO.getFiles()) {
-			
+
 			if(!f.isEmpty()) {
 				log.info("FileName : {}", f.getOriginalFilename());
 				String fileName = fileManager.saveFile(f, path);
@@ -66,7 +71,7 @@ public class QnaService {
 				qnaFileVO.setOriName(f.getOriginalFilename());
 				qnaFileVO.setNum(qnaVO.getNum());
 				qnaMapper.setFileAdd(qnaFileVO);
-																
+				
 			}
 		}
 		
