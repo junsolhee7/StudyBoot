@@ -56,7 +56,7 @@ public class SecurityConfig  {
 	}
 	
 	@Bean
-	SecurityFilterChain fiterChain(HttpSecurity httpSecurity)throws Exception{
+	SecurityFilterChain filterChain(HttpSecurity httpSecurity)throws Exception{
 		httpSecurity
 					.csrf()
 					.disable()
@@ -93,15 +93,14 @@ public class SecurityConfig  {
 					.and()
 				.rememberMe()  //RememberMe 설정
 					.rememberMeParameter("rememberMe") //파라미터명
-					.tokenValiditySeconds(300)         //로그인유지 유지시간, 초단위
+					.tokenValiditySeconds(300)       //로그인유지 유지시간, 초단위
 					.key("rememberMe")  // 인증받은 사용자의 정보f로 Token 생성시 필요, 필수값
 					.userDetailsService(memberSecurityService) //인증 절차를 실행할 UserDetailService, 필수
 					.authenticationSuccessHandler(loginSuccess) //Login 성공 Handler
 					.and()
-				.oauth2Login() //Social Login 설정
-					.userInfoEndpoint()
-					.userService(memberSocialService)
-					
+//				.oauth2Login() //Social Login 설정
+//					.userInfoEndpoint()
+//					.userService(memberSocialService)
 					;
 		
 		return httpSecurity.build();

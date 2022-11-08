@@ -51,7 +51,7 @@
 						<a href="./member/mypage">myPage</a>
 						<a href="./member/logout">로그아웃</a>
 						<form id="outForm" action="./member/logout" method="post">
-						
+							
 						</form>
 
 					</sec:authorize>					
@@ -73,6 +73,9 @@
 				<button class="buttons">BTN1</button>
 				<button class="buttons">BTN2</button>
 				<button class="buttons">BTN3</button>
+				
+				<%-- <a href="https://kauth.kakao.com/oauth/logout?client_id=${df4281d957d19ff66538cf1d877567a1}&logout_redirect_uri=${http://localhost:81/member/logoutResult}">Kakao Logout</a> --%>
+				
 
 				<div id="test">
 				</div>
@@ -80,7 +83,6 @@
 				<h1>${h}</h1>
 				<h1>${h}</h1>
 				<h1>${h}</h1>
-				
 			</div>
 		</div>
 	</div>

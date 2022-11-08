@@ -27,6 +27,10 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	@GetMapping("logoutResult")
+	public String socialLogout()throws Exception{
+		return "redirect:../";
+	}
 	
 	@GetMapping("mypage")
 	public void getMyPage()throws Exception{
@@ -92,6 +96,7 @@ public class MemberController {
 	}
 	@GetMapping("login")
 	public void getLogin(@RequestParam(defaultValue = "false", required = false) boolean error, String message, Model model)throws Exception{
+		log.info("test1");
 		if(error) {
 			model.addAttribute("msg", "ID 또는 PW를 확인하세요");
 		}
@@ -99,6 +104,7 @@ public class MemberController {
 	}
 	@PostMapping("login")
 	public String getLogin()throws Exception{
+		log.info("test2");
 		log.info(" ========= Login Post ===========");
 		return "member/login";
 	}
