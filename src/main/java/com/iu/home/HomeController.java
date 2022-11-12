@@ -1,7 +1,10 @@
 package com.iu.home;
 
+import java.util.Calendar;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -20,11 +23,16 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.servlet.function.ServerRequest.Headers;
 
+import com.iu.home.board.qna.PostVO;
 import com.iu.home.board.qna.QnaMapper;
 import com.iu.home.board.qna.QnaVO;
 import com.iu.home.member.MemberVO;
+
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @Controller
 public class HomeController {
@@ -35,7 +43,7 @@ public class HomeController {
 	private String app;
 	
 //	private final Logger log = LoggerFactory.getLogger(HomeController.class);
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
+	private final Logger log = LoggerFactory.getLogger(this.getClass());	
 	
 	@Autowired
 	private QnaMapper qnaMapper;
@@ -58,6 +66,31 @@ public class HomeController {
 		return "Member Role";
 	}
 ////////////////////////////////////////////////////////////////////////////////////
+	@GetMapping("/web")
+	public String webClientTest() {		
+		WebClient webClient = WebClient.builder()
+												.baseUrl("htpps://jsonplaceholder.typicode.com/")
+												.build();
+		
+		Flux<PostVO> res = webClient.get()
+						.uri("posts/1")
+						.retrieve()
+						.bodyToFlux(PostVO.class);
+										
+		PostVO postVO = res.blockFirst();
+		
+		res.subscribe((s)->{
+			PostVO pvo=s;
+			log.info("s.getId()");
+		});
+		
+		log.info("Result => {}",postVO);
+
+		
+		
+		return"";
+	}
+	
 	@GetMapping("/address")
 	@ResponseBody
 	public String address() throws Exception{
@@ -93,13 +126,9 @@ public class HomeController {
 		HttpEntity<MultiValueMap<String,String>> request = new HttpEntity<MultiValueMap<String,String>>(params, headers);
 		
 		//4. 요청 전송 결과 처리
-		ResponseEntity<String> response = restTemplate.getForEntity("https://jsonplaceholder.typicode.com/posts/1",String.class,request);
-		String result = response.getBody();
-		log.info("response=>{}",response);
-				
-		
-				
-		
+		List<PostVO> posts = restTemplate.getForObject("https://jsonplaceholder.typicode.com/posts",List.class,request);
+//		List<PostVO> postVO = response.getBody();
+		log.info("Posts=>{}",posts);
 		log.info("==========================");
 		Enumeration<String> en = session.getAttributeNames();
 		while(en.hasMoreElements()) {

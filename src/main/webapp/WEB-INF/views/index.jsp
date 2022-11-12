@@ -54,6 +54,8 @@
 							
 						</form>
 
+						<a href="/member/delete">회원탈퇴</a>
+						
 					</sec:authorize>					
 					<!-- 로그인 전 -->
 					<sec:authorize access="!isAuthenticated()">									
